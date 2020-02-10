@@ -5,7 +5,9 @@ import android.content.SharedPreferences;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
@@ -35,6 +37,8 @@ public class SplashActivity extends AppCompatActivity {
     private static final int REQUEST_CODE = 1337;
     private static final String SCOPES = "user-read-recently-played,user-library-modify,user-library-read,playlist-modify-public,playlist-modify-private,user-read-email,user-read-private,playlist-read-private,playlist-read-collaborative";
 
+    //Layout variables
+    private Button btnLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,8 +46,9 @@ public class SplashActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_splash);
 
+        btnLogin = (Button) findViewById(R.id.btn_login);
+        btnLogin.setOnClickListener(mListener);
 
-        authenticateSpotify();
 
         msharedPreferences = this.getSharedPreferences("SPOTIFY", 0);
         queue = Volley.newRequestQueue(this);
@@ -58,6 +63,7 @@ public class SplashActivity extends AppCompatActivity {
             editor.putString("userid", user.id);
             editor.putString("userEmail", user.email);
             editor.putString("userName", user.display_name);
+            editor.putString("userCountry", user.country);
             Log.d("STARTING", "GOT USER INFORMATION");
             Log.d("EMAIL: ", user.email );
             // We use commit instead of apply because we need the information stored immediately
@@ -109,6 +115,18 @@ public class SplashActivity extends AppCompatActivity {
             }
         }
     }
+
+    View.OnClickListener mListener = new View.OnClickListener(){
+
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()){
+                case R.id.btn_login:
+                    authenticateSpotify();
+                    break;
+            }
+        }
+    };
 
 
 }

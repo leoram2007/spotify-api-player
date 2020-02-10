@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">spotify_api_player</string>
+    <string name="app_name">Spotiapi by Leonardo</string>
+    <string name="user_information">User Information</string>
+    <string name="user_name">User Name</string>
+    <string name="user_email">User Email</string>
+    <string name="bienvenido_a_spotiapi">Bienvenido a SpotiApi</string>
+    <string name="iniciar_sesion">Iniciar Sesión</string>
 </resources>

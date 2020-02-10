@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView songView;
     private TextView name;
     private TextView email;
+    private TextView country;
     private Button addBtn;
     private Song song;
 
@@ -45,20 +46,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         songService = new SongService(getApplicationContext());
-        userView = (TextView) findViewById(R.id.user);
+        //userView = (TextView) findViewById(R.id.user);
         songView = (TextView) findViewById(R.id.song);
 
         //user
-        name = (TextView) findViewById(R.id.name);
-        email = (TextView) findViewById(R.id.email);
+        name = (TextView) findViewById(R.id.txt_name);
+        email = (TextView) findViewById(R.id.txt_email);
+        country = (TextView) findViewById(R.id.txt_country);
 
         addBtn = (Button) findViewById(R.id.add);
 
         //Set data user
         SharedPreferences sharedPreferences = this.getSharedPreferences("SPOTIFY", 0);
-        userView.setText(sharedPreferences.getString("userid", "No User"));
+        //User Id not showed in layout
+        //userView.setText(sharedPreferences.getString("userid", "No User"));
         email.setText(sharedPreferences.getString("userEmail", "No email"));
         name.setText(sharedPreferences.getString("userName", "No Name"));
+        country.setText(sharedPreferences.getString("userCountry", "No Country"));
 
         getTracks();
 
