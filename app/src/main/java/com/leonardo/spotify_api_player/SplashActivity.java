@@ -16,22 +16,25 @@ import com.spotify.sdk.android.authentication.AuthenticationClient;
 import com.spotify.sdk.android.authentication.AuthenticationRequest;
 import com.spotify.sdk.android.authentication.AuthenticationResponse;
 
-import com.leonardo.spotify_api_player.Connectors.UserService;
-
 import com.leonardo.spotify_api_player.Model.User;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 /**
- * Start Activity, authenticate Spotify
+ * Class SplashActivity will be the first Activity for the user, this will authenticate Spotify
  */
 public class SplashActivity extends AppCompatActivity {
 
+    /**
+     * Constants with the SharedPreferences which is our persistent storage
+     * */
     private SharedPreferences.Editor editor;
     private SharedPreferences msharedPreferences;
-
     private RequestQueue queue;
 
+    /**
+     * Constants used to connect the application with spotify API
+     * */
     private static final String CLIENT_ID = "3c3d8e82c96549679e1e1c888eb3a41d";
     private static final String REDIRECT_URI = "com.spotifyapiplayer://callback";
     private static final int REQUEST_CODE = 1337;
@@ -54,7 +57,9 @@ public class SplashActivity extends AppCompatActivity {
         queue = Volley.newRequestQueue(this);
     }
 
-
+    /**
+     * Here we use the user model for our users with the information we are going to receive from the Spotify API
+     * */
     private void waitForUserInfo() {
         UserService userService = new UserService(queue, msharedPreferences);
         userService.get(() -> {
@@ -72,12 +77,18 @@ public class SplashActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * This method will redirect to MainActivity (user account) when the user information from Spotify API is ready
+     * */
     private void startMainActivity() {
         Intent newintent = new Intent(SplashActivity.this, MainActivity.class);
         startActivity(newintent);
     }
 
-
+    /**
+     * This method will take the constants for authentication, and the response we want (in this case an authentication token)
+     * also we set our requested scopes (These are different permissions we need to request)
+     * */
     private void authenticateSpotify() {
         AuthenticationRequest.Builder builder = new AuthenticationRequest.Builder(CLIENT_ID, AuthenticationResponse.Type.TOKEN, REDIRECT_URI);
         builder.setScopes(new String[]{SCOPES});
@@ -116,6 +127,9 @@ public class SplashActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Method to open the Spotify WebView where the user has to log in or will open Spotify (if it’s installed)
+     * */
     View.OnClickListener mListener = new View.OnClickListener(){
 
         @Override

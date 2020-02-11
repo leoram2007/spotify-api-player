@@ -1,5 +1,8 @@
 package com.leonardo.spotify_api_player.Model;
 
+/**
+ * Model class to Song with 2 attributes
+ * */
 public class Song {
 
     private String id;

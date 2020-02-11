@@ -35,4 +35,43 @@
         app:layout_constraintHorizontal_bias="0.553"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <ImageButton
+        android:id="@+id/menu_account"
+        android:layout_width="100dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="4dp"
+        android:background="@drawable/menu_account"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.988"
+        android:onClick="goToAccount"
+        />
+
+    <ImageButton
+        android:id="@+id/menu_playlist"
+        android:layout_width="100dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="120dp"
+        android:background="@drawable/menu_playlist"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.988"
+        android:alpha="0.40"/>
+
+    <ImageButton
+        android:id="@+id/menu_search"
+        android:layout_width="100dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="240dp"
+        android:background="@drawable/menu_search"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.988" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
